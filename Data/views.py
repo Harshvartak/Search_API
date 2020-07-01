@@ -14,6 +14,9 @@ from rest_framework import filters
 
 from .serializers import *
 
+'''
+For adding the csv to the database this function was created
+Not it is of no use
 
 def datafill(request):
     df=pd.read_csv("bank_branches.csv")
@@ -31,7 +34,9 @@ def datafill(request):
 
     return render(request, "Data/datafill.html")
 
+'''
 
+'''
 @api_view(['POST'])
 def ifsc_search(request):
     if request.method == 'POST':
@@ -45,7 +50,9 @@ def ifsc_search(request):
             else:
                 return Response("Not found")
 
+'''
 
+'''This is the working part of the first part of the assignment'''
 class IfscAPIView(generics.ListCreateAPIView):
     search_fields = ['ifsc']
     filter_backends = (filters.SearchFilter,)
@@ -53,11 +60,17 @@ class IfscAPIView(generics.ListCreateAPIView):
     serializer_class = IfscSearchSerializer
 
 
+
+'''
 class DynamicSearchFilter(filters.SearchFilter):
     def get_search_fields(self, view, request):
         return request.GET.getlist('search_fields', [])
 
 
+'''
+
+
+'''This is the second part of the assignment, there is a bug, will fix later'''
 class Part2APIView(generics.ListCreateAPIView):
     queryset = Bank.objects.all()
     serializer_class = IfscSearchSerializer

@@ -21,7 +21,7 @@ from Data.views import *
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('data',datafill, name = 'datafill'),
+    '''path('data',datafill, name = 'datafill'),'''
     path('ifsc_search',IfscAPIView.as_view(),name='ifsc_search'),
     path('custom_search',Part2APIView.as_view()),
 ]+ static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
